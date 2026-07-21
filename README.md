@@ -8,6 +8,7 @@ A cost-efficient, sequential multi-agent RAG (Retrieval-Augmented Generation) sy
 - **Sequential Multi-Agent Pipeline**:
   - `retriever_agent`: Strictly retrieves matches from ChromaDB without summarizing (preventing early hallucinations).
   - `synthesizer_agent`: Synthesizes a grounded final answer citing the source document and page number.
+- **Semantic Text Splitting**: Uses `langchain` recursive text splitters for context-aware chunking, enhancing retrieval accuracy compared to naive page-based splits.
 
 ## Project Structure
 - `agent.py`: Agent logic containing both sub-agents and the sequential orchestrator.
@@ -20,7 +21,7 @@ A cost-efficient, sequential multi-agent RAG (Retrieval-Augmented Generation) sy
    ```bash
    python3 -m venv .venv
    source .venv/bin/activate
-   pip install google-adk[extensions] chromadb pypdf fpdf
+   pip install -r requirements.txt
    ```
 2. Create a `.env` file inside `regdoc_agent/` with:
    ```env

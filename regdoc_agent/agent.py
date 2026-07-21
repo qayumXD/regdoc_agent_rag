@@ -20,7 +20,7 @@ def search_knowledge_base(query: str) -> dict:
     """
     results = _collection.query(query_texts=[query], n_results=4)
     matches = [
-        {"text": doc, "source": meta["source"], "page": meta["page"]}
+        {"text": doc, "source": meta["source"], "chunk": meta["chunk"]}
         for doc, meta in zip(results["documents"][0], results["metadatas"][0])
     ]
     return {"matches": matches}
@@ -41,7 +41,8 @@ synthesizer_agent = Agent(
     model="openai/qwen-max",
     instruction=(
         "The retrieved passages are in {retrieved_chunks}. Draft a clear, grounded answer to the "
-        "user's question, citing the source document and page for every claim. If the passages "
+        "user's question, citing the source document and page number for every claim. (Note: "
+        "page markers are embedded within the text as '--- PAGE X ---'). If the passages "
         "don't actually answer the question, say so explicitly instead of guessing."
     ),
 )

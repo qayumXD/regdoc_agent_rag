@@ -1,0 +1,5 @@
+google-adk[extensions]
+chromadb
+pypdf
+fpdf
+langchain-text-splitters
