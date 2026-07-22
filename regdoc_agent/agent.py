@@ -27,7 +27,7 @@ def search_knowledge_base(query: str) -> dict:
 
 retriever_agent = Agent(
     name="retriever_agent",
-    model="openai/qwen-max",
+    model="openai/gpt-4o-mini",
     instruction=(
         "Given the user's question, call search_knowledge_base with the question as the query. "
         "Return the raw matches exactly as returned — do not summarize or answer yourself."
@@ -38,7 +38,7 @@ retriever_agent = Agent(
 
 synthesizer_agent = Agent(
     name="synthesizer_agent",
-    model="openai/qwen-max",
+    model="openai/gpt-4o",
     instruction=(
         "The retrieved passages are in {retrieved_chunks}. Draft a clear, grounded answer to the "
         "user's question, citing the source document and page number for every claim. (Note: "

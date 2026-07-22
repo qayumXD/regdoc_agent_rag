@@ -3,3 +3,6 @@ chromadb
 pypdf
 fpdf
 langchain-text-splitters
+openai
+python-dotenv
+pandas
